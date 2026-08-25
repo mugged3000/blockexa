@@ -56,7 +56,7 @@ export default function VideoShowcase() {
                 <video
                   ref={videoRef}
                   className="absolute inset-0 w-full h-full object-cover"
-                  src="/showcase-clip.mp4"
+                  src="https://ik.imagekit.io/vtzqspheah/showcase-clip.mp4"
                   autoPlay
                   loop
                   muted={muted}
