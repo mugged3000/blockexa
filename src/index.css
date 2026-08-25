@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@theme {
+  --color-ink: #05100c;
+  --color-panel: #0a1c16;
+  --color-panel-raised: #0f2820;
+  --color-line: #17362b;
+  --color-signal: #2fe6a3;
+  --color-signal-dim: #1c8f68;
+  --color-signal-glow: #7dffce;
+  --color-ivory: #eaf5ef;
+  --color-moss: #7f9c90;
+
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background-color: var(--color-ink); color: var(--color-ivory); font-family: var(--font-body); overflow-x: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.plan-shine {
+  background: linear-gradient(
+    120deg,
+    var(--color-line) 0%,
+    var(--color-line) 35%,
+    var(--color-signal) 50%,
+    var(--color-line) 65%,
+    var(--color-line) 100%
+  );
+  background-size: 260% 100%;
+  animation: plan-shine-sweep 5s linear infinite;
+}
+
+@keyframes plan-shine-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -60% 0; }
+}
+
+.sparkle {
+  opacity: 0;
+  animation: sparkle-twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50% { opacity: 1; transform: scale(1); }
+}
