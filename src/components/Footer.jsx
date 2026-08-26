@@ -41,9 +41,9 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="relative bg-panel border-t border-line">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-10">
-        <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 lg:gap-8">
-          <div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-16 lg:pt-20 pb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-x-8 gap-y-10 lg:gap-8">
+          <div className="col-span-2 lg:col-span-1">
             <a href="#home" className="flex items-center">
               <img src="/logoexaa.jpg" alt="Blockexa" className="h-9 w-auto select-none" />
             </a>
@@ -83,7 +83,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-line flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-line flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-xs text-moss">© {new Date().getFullYear()} Blockexa. All rights reserved.</p>
           <p className="text-xs text-moss max-w-xl leading-relaxed">
             Crypto investments carry risk, including loss of principal. Past returns don't guarantee future performance — invest only what you can afford to lose.
