@@ -14,7 +14,9 @@ const KITE_CLIP = 'polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 3
 */
 const TEAM = [
   { name: 'Julian Cross', role: 'Founder & CEO', bio: 'Leads strategy and reserve management. Fifteen years across trading desks before founding Blockexa.', photo: '/team/julian-cross.jpg' },
-  { name: 'Sofia Marchetti', role: 'Head of Trading & Risk', bio: 'Runs the desk that opens and closes every position, and the risk checks that gate them.', photo: '/team/sofia-marchetti.jpg' },
+  { name: 'Sofia Marchetti', role: 'Head of Trading & Risk', bio: 'Runs the desk that opens and closes every position, and the risk checks that gate them.', photo: '/team/sofia-marchettii.jpg' },
+  { name: 'Marcus Bell', role: 'Head of Engineering', bio: 'Builds and maintains the escrow infrastructure, from smart contract logic to uptime.', photo: '/team/marcus-bell.jpg' },
+  { name: 'Paul Mark', role: 'Compliance & Disputes', bio: 'Oversees dispute resolution and keeps every transaction within regulatory bounds.', photo: '/team/paul-mark.jpg' },
 ];
 
 export default function Team() {

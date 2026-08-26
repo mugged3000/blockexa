@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-x-8 gap-y-10 lg:gap-8">
           <div className="col-span-2 lg:col-span-1">
             <a href="#home" className="flex items-center">
-              <img src="/logoexaa.jpg" alt="Blockexa" className="h-9 w-auto select-none" />
+              <img src="/logoexaa.jpg" alt="Blockexa" className="h-15 w-auto select-none" />
             </a>
             <p className="mt-5 text-sm text-moss leading-relaxed max-w-xs">
               Blockexa gives everyday investors a transparent way into crypto — daily settlement, an open trade history, and withdrawals on your terms.

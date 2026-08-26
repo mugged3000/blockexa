@@ -81,8 +81,8 @@ export default function ConsensusDiagram() {
             ))}
           </div>
 
-          <div className="diagram-reveal relative h-[420px] lg:h-[520px]">
-            <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${VB_W} ${VB_H}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <div className="diagram-reveal relative h-[460px] sm:h-[520px] lg:h-[560px]">
+            <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${VB_W} ${VB_H}`} preserveAspectRatio="none" aria-hidden="true">
               {NODE_Y.map((y, i) => (
                 <path
                   key={i}
@@ -110,13 +110,13 @@ export default function ConsensusDiagram() {
               ))}
               <circle ref={outDotRef} r="4" fill="#7dffce" style={{ filter: 'drop-shadow(0 0 6px #2fe6a3)' }} />
 
-              <circle cx={CONSENSUS_X} cy={CONSENSUS_Y} r="72" fill="rgba(15,40,32,0.9)" stroke="#2fe6a3" strokeWidth="1.5" />
-              <text x={CONSENSUS_X} y={CONSENSUS_Y - 6} textAnchor="middle" fill="#eaf5ef" fontFamily="Sora, sans-serif" fontWeight="700" fontSize="15">CONSENSUS</text>
-              <text x={CONSENSUS_X} y={CONSENSUS_Y + 16} textAnchor="middle" fill="#7f9c90" fontFamily="JetBrains Mono, monospace" fontSize="11">4/4 AGREE</text>
+              <circle cx={CONSENSUS_X} cy={CONSENSUS_Y} r="88" fill="rgba(15,40,32,0.9)" stroke="#2fe6a3" strokeWidth="2" />
+              <text x={CONSENSUS_X} y={CONSENSUS_Y - 8} textAnchor="middle" fill="#eaf5ef" fontFamily="Sora, sans-serif" fontWeight="700" fontSize="22">CONSENSUS</text>
+              <text x={CONSENSUS_X} y={CONSENSUS_Y + 20} textAnchor="middle" fill="#9fb8ab" fontFamily="JetBrains Mono, monospace" fontSize="17">4/4 AGREE</text>
 
-              <rect x={OPERATION_X} y={CONSENSUS_Y - 30} width="90" height="60" rx="10" fill="rgba(15,40,32,0.9)" stroke="#1c8f68" strokeWidth="1.5" />
-              <text x={OPERATION_X + 45} y={CONSENSUS_Y - 4} textAnchor="middle" fill="#2fe6a3" fontFamily="Sora, sans-serif" fontWeight="700" fontSize="12">TRADE</text>
-              <text x={OPERATION_X + 45} y={CONSENSUS_Y + 16} textAnchor="middle" fill="#7f9c90" fontFamily="JetBrains Mono, monospace" fontSize="10">EXECUTED</text>
+              <rect x={OPERATION_X - 10} y={CONSENSUS_Y - 38} width="110" height="76" rx="12" fill="rgba(15,40,32,0.9)" stroke="#1c8f68" strokeWidth="2" />
+              <text x={OPERATION_X + 45} y={CONSENSUS_Y - 6} textAnchor="middle" fill="#2fe6a3" fontFamily="Sora, sans-serif" fontWeight="700" fontSize="18">TRADE</text>
+              <text x={OPERATION_X + 45} y={CONSENSUS_Y + 20} textAnchor="middle" fill="#9fb8ab" fontFamily="JetBrains Mono, monospace" fontSize="14">EXECUTED</text>
             </svg>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 
 const DROPDOWNS = {
@@ -13,8 +12,8 @@ const DROPDOWNS = {
   investor: {
     label: 'Investor',
     items: [
-      { label: 'Crypto Investment', href: '#crypto-investment' },
-      { label: 'Escrow Service', href: '#escrow-service' },
+     { label: 'Crypto Investment', href: '/crypto-investment' },
+      { label: 'Escrow Service', href: '/escrow' },
     ],
   },
   legitimacy: {
@@ -72,7 +71,7 @@ function NavDropdown({ id, label, items, open, onOpen, onClose }) {
   );
 }
 
-function MobileAccordion({ label, items, open, onToggle }) {
+function MobileAccordion({ label, items, open, onToggle, onNavigate }) {
   return (
     <div className="border-b border-line">
       <button
@@ -92,9 +91,9 @@ function MobileAccordion({ label, items, open, onToggle }) {
             return (
               <li key={item.label}>
                 {item.href.startsWith('/') ? (
-                  <Link to={item.href} className={className}>{item.label}</Link>
+                  <Link to={item.href} className={className} onClick={onNavigate}>{item.label}</Link>
                 ) : (
-                  <a href={item.href} className={className}>{item.label}</a>
+                  <a href={item.href} className={className} onClick={onNavigate}>{item.label}</a>
                 )}
               </li>
             );
@@ -102,68 +101,6 @@ function MobileAccordion({ label, items, open, onToggle }) {
         </ul>
       </div>
     </div>
-  );
-}
-
-function MobileDrawer({ mobileOpen, setMobileOpen, mobileAccordion, setMobileAccordion }) {
-  return createPortal(
-    <div
-      className={`lg:hidden fixed inset-0 z-[999] transition-opacity duration-300 ${
-        mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}
-    >
-      <div
-        className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
-        onClick={() => setMobileOpen(false)}
-      />
-
-      <div
-        className={`absolute top-0 right-0 h-full w-[86%] max-w-sm bg-panel border-l border-line px-6 pt-24 pb-8 overflow-y-auto transition-transform duration-300 ease-out ${
-          mobileOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="border-b border-line">
-          <Link to="/" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">
-            Home
-          </Link>
-        </div>
-
-        {Object.entries(DROPDOWNS).map(([id, d]) => (
-          <MobileAccordion
-            key={id}
-            label={d.label}
-            items={d.items}
-            open={mobileAccordion === id}
-            onToggle={() => setMobileAccordion((v) => (v === id ? null : id))}
-          />
-        ))}
-
-        <div className="border-b border-line">
-          <a href="#contact" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">
-            Contact
-          </a>
-        </div>
-
-        <div className="mt-6 flex flex-col gap-3">
-          
-           <a href="#login"
-            onClick={() => setMobileOpen(false)}
-            className="flex items-center justify-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-medium text-ivory/90 hover:border-signal-dim transition-colors"
-          >
-            <LoginIcon className="w-4 h-4" />
-            Log in
-          </a>
-          
-           <a href="#register"
-            onClick={() => setMobileOpen(false)}
-            className="text-center rounded-full bg-signal text-ink text-sm font-semibold px-5 py-3 hover:bg-signal-glow transition-colors"
-          >
-            Register
-          </a>
-        </div>
-      </div>
-    </div>,
-    document.body
   );
 }
 
@@ -182,66 +119,53 @@ export default function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const handleOpen = (id) => {
-    clearTimeout(closeTimer.current);
-    setOpenId(id);
-  };
-  const handleClose = () => {
-    closeTimer.current = setTimeout(() => setOpenId(null), 120);
-  };
+  const handleOpen = (id) => { clearTimeout(closeTimer.current); setOpenId(id); };
+  const handleClose = () => { closeTimer.current = setTimeout(() => setOpenId(null), 120); };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled || mobileOpen ? 'bg-ink/85 backdrop-blur-md border-b border-line' : 'bg-transparent border-b border-transparent'
-      }`}
-    >
+    <>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      scrolled || mobileOpen ? 'bg-ink/85 backdrop-blur-md border-b border-line' : 'bg-transparent border-b border-transparent'
+    }`}>
       <nav className="relative z-50 mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
-         <img src="/logoexaa.jpg" alt="Blockexa" className="h-12 w-auto select-none" />
+          {/*
+            LOGO IMAGE — drop your logo file at public/logo.jpg
+            h-9 keeps it inside the 80px nav bar with breathing room;
+            width is automatic so it won't distort.
+          */}
+          <img
+            src="/logoexaa.jpg"
+            alt="Blockexa"
+            className="h-15 w-auto select-none"
+          />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          <Link to="/" className="text-sm text-ivory/80 hover:text-ivory transition-colors">
-            Home
-          </Link>
+          <Link to="/" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Home</Link>
           {Object.entries(DROPDOWNS).map(([id, d]) => (
-            <NavDropdown
-              key={id}
-              id={id}
-              label={d.label}
-              items={d.items}
-              open={openId === id}
-              onOpen={handleOpen}
-              onClose={handleClose}
-            />
+            <NavDropdown key={id} id={id} label={d.label} items={d.items} open={openId === id} onOpen={handleOpen} onClose={handleClose} />
           ))}
-          <a href="#contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">
-            Contact
-          </a>
+          <a href="#contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Contact</a>
         </div>
 
         <div className="flex items-center gap-3">
-          
-           <Link to="#register"
-            className="hidden sm:inline-block rounded-full bg-signal text-ink text-sm font-semibold px-5 py-2.5 hover:bg-signal-glow transition-colors"
-          >
+          <a href="#register" className="inline-block rounded-full bg-signal text-ink text-sm font-semibold px-5 py-2.5 hover:bg-signal-glow transition-colors">
             Register
-          </Link>
+          </a>
 
-          
-         <a to="#login"
+          <a
+            href="#login"
             aria-label="Log in"
-            className="w-10 h-10 rounded-full border border-line flex items-center justify-center text-ivory/85 hover:text-ivory hover:border-signal-dim transition-colors shrink-0"
+            className="hidden sm:flex w-10 h-10 rounded-full border border-line items-center justify-center text-ivory/85 hover:text-ivory hover:border-signal-dim transition-colors shrink-0"
           >
             <LoginIcon />
           </a>
 
+          {/* Hamburger — mobile & tablet only */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -249,32 +173,71 @@ export default function Nav() {
             className="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0"
           >
             <span className="relative w-4 h-3.5 block">
-              <span
-                className={`absolute left-0 top-0 w-4 h-[1.6px] bg-ivory transition-all duration-300 ${
-                  mobileOpen ? 'translate-y-[6.5px] rotate-45' : ''
-                }`}
-              />
-              <span
-                className={`absolute left-0 top-1/2 -translate-y-1/2 w-4 h-[1.6px] bg-ivory transition-opacity duration-200 ${
-                  mobileOpen ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
-              <span
-                className={`absolute left-0 bottom-0 w-4 h-[1.6px] bg-ivory transition-all duration-300 ${
-                  mobileOpen ? '-translate-y-[6.5px] -rotate-45' : ''
-                }`}
-              />
+              <span className={`absolute left-0 top-0 w-4 h-[1.6px] bg-ivory transition-all duration-300 ${mobileOpen ? 'translate-y-[6.5px] rotate-45' : ''}`} />
+              <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-4 h-[1.6px] bg-ivory transition-opacity duration-200 ${mobileOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 bottom-0 w-4 h-[1.6px] bg-ivory transition-all duration-300 ${mobileOpen ? '-translate-y-[6.5px] -rotate-45' : ''}`} />
             </span>
           </button>
         </div>
       </nav>
-
-      <MobileDrawer
-        mobileOpen={mobileOpen}
-        setMobileOpen={setMobileOpen}
-        mobileAccordion={mobileAccordion}
-        setMobileAccordion={setMobileAccordion}
-      />
     </header>
+
+    {/* Mobile drawer — deliberately outside <header> and given a very
+        high z-index of its own, so it can never end up stacked behind
+        header or any page content regardless of what z-index those use. */}
+    <div
+      className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ${
+        mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}
+    >
+      <div
+        className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
+        onClick={() => setMobileOpen(false)}
+      />
+
+      <div
+        className={`absolute top-0 right-0 h-full w-[86%] max-w-sm bg-panel border-l border-line px-6 pt-24 pb-8 overflow-y-auto transition-transform duration-300 ease-out ${
+            mobileOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="border-b border-line">
+            <Link to="/" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">Home</Link>
+          </div>
+
+          {Object.entries(DROPDOWNS).map(([id, d]) => (
+            <MobileAccordion
+              key={id}
+              label={d.label}
+              items={d.items}
+              open={mobileAccordion === id}
+              onToggle={() => setMobileAccordion((v) => (v === id ? null : id))}
+              onNavigate={() => setMobileOpen(false)}
+            />
+          ))}
+
+          <div className="border-b border-line">
+            <a href="#contact" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">Contact</a>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-3">
+            <a
+              href="#login"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-medium text-ivory/90 hover:border-signal-dim transition-colors"
+            >
+              <LoginIcon className="w-4 h-4" />
+              Log in
+            </a>
+            <a
+              href="#register"
+              onClick={() => setMobileOpen(false)}
+              className="text-center rounded-full bg-signal text-ink text-sm font-semibold px-5 py-3 hover:bg-signal-glow transition-colors"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

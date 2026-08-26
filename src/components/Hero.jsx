@@ -62,20 +62,20 @@ export default function Hero() {
         ))}
       </svg>
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-10 pt-20">
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-10 pt-16">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-panel/60 px-3 py-1 text-xs text-moss font-mono mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-            Blockexa · audited & transparent
-          </span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-signal/30 bg-panel/70 px-4 py-1.5 text-xs font-medium text-signal font-mono mb-5 shadow-[0_0_20px_rgba(47,230,163,0.08)]">
+  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse shadow-[0_0_8px_#2fe6a3]" />
+  Blockexa · audited & transparent
+</span>
 
           <h1 ref={headlineRef} className="font-display font-bold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] tracking-tight text-ivory">
             Invest in crypto the <span className="text-signal">transparent</span> way with Blockexa.
           </h1>
 
-          <p ref={subRef} className="mt-6 text-lg text-moss max-w-lg leading-relaxed">
-            Blockexa puts your capital to work across digital assets with daily settlement, an open trade history, and withdrawals whenever you need them — no lockups, no black box.
-          </p>
+          <p ref={subRef} className="mt-5 text-base sm:text-lg text-moss max-w-md leading-relaxed">
+  Put your capital to work across digital assets with transparent trades, daily settlement, and flexible withdrawals.
+</p>
 
           <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
             <a href="#register" className="rounded-full bg-signal text-ink font-semibold px-7 py-3.5 hover:bg-signal-glow transition-colors">Start Investing</a>
