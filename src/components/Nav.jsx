@@ -203,7 +203,7 @@ export default function Nav() {
     >
       <nav className="relative z-50 mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
-          <img src="/logoexaa.jpg" alt="Blockexa" className="h-9 w-auto select-none" />
+         <img src="/logoexaa.jpg" alt="Blockexa" className="h-12 w-auto select-none" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
