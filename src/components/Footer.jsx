@@ -20,12 +20,11 @@ const LINK_GROUPS = [
   {
     heading: 'Legitimacy',
     links: [
-      { label: 'Privacy Policy', href: '#privacy-policy' },
-      { label: 'Payment Policy', href: '#payment-policy' },
-      { label: 'Withdrawal Policy', href: '#withdrawal-policy' },
-      { label: 'Anti-Money Laundering (AML)', href: '#aml' },
-      { label: 'Know Your Customer (KYC)', href: '#kyc' },
-      { label: 'Terms and Conditions', href: '#terms' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Payment Policy', href: '/payment-policy' },
+     { label: 'Withdrawal Policy', href: '/withdrawal-policy' },
+     { label: 'AML & KYC Policy', href: '/aml-kyc' },
+      { label: 'Terms and Conditions', href: '/terms' },
       { label: 'White Paper', href: '#white-paper' },
     ],
   },
