@@ -148,7 +148,7 @@ export default function Nav() {
           {Object.entries(DROPDOWNS).map(([id, d]) => (
             <NavDropdown key={id} id={id} label={d.label} items={d.items} open={openId === id} onOpen={handleOpen} onClose={handleClose} />
           ))}
-          <a href="#contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Contact</a>
+          <a href="/contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Contact</a>
         </div>
 
         <div className="flex items-center gap-3">

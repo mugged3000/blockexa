@@ -1,22 +1,24 @@
+import { Link } from 'react-router-dom';
 const LINK_GROUPS = [
   {
     heading: 'Company',
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'Awards', href: '#awards' },
-      { label: 'Why Blockexa', href: '#why-us' },
-      { label: 'Team', href: '#team' },
+      { label: 'About', href: '/about' },
+      { label: 'Awards', href: '/awards' },
+      { label: 'Why Blockexa', href: '/#why-us' },
+      { label: 'Team', href: '/#team' },
     ],
   },
   {
     heading: 'Investor',
     links: [
-      { label: 'Crypto Investment', href: '#crypto-investment' },
-      { label: 'Investment Plans', href: '#plans' },
-      { label: 'ROI Calculator', href: '#roi-calculator' },
-      { label: 'Escrow Service', href: '#escrow-service' },
+      { label: 'Crypto Investment', href: '/crypto-investment' },
+      { label: 'Investment Plans', href: '/#plans' },
+      { label: 'ROI Calculator', href: '/#roi-calculator' },
+      { label: 'Escrow Service', href: '/escrow' },
     ],
   },
+  
   {
     heading: 'Legitimacy',
     links: [
@@ -70,14 +72,20 @@ export default function Footer() {
             <div key={group.heading}>
               <h4 className="text-xs font-mono uppercase tracking-widest text-signal-dim">{group.heading}</h4>
               <ul className="mt-5 space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <a href={link.href} className="text-sm text-moss hover:text-ivory transition-colors">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+  {group.links.map((link) => {
+    const className = 'text-sm text-moss hover:text-ivory transition-colors';
+    const isInternal = link.href.startsWith('/');
+    return (
+      <li key={link.label}>
+        {isInternal ? (
+          <Link to={link.href} className={className}>{link.label}</Link>
+        ) : (
+          <a href={link.href} className={className}>{link.label}</a>
+        )}
+      </li>
+    );
+  })}
+</ul>
             </div>
           ))}
         </div>
