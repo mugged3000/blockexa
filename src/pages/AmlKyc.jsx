@@ -78,7 +78,7 @@ export default function AmlKyc() {
 
           <p className="aml-para text-sm text-moss leading-relaxed pt-4">
             Questions about this policy? Reach us at{' '}
-            <a href="mailto:compliance@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">compliance@blockexa.com</a>.
+            <a href="mailto:compliance@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">compliance@blockexa.ltd</a>.
           </p>
         </div>
       </section>

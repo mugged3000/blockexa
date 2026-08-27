@@ -77,9 +77,9 @@ export default function Hero() {
   Put your capital to work across digital assets with transparent trades, daily settlement, and flexible withdrawals.
 </p>
 
-          <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#register" className="rounded-full bg-signal text-ink font-semibold px-7 py-3.5 hover:bg-signal-glow transition-colors">Start Investing</a>
-            <a href="#roi-calculator" className="rounded-full border border-line px-7 py-3.5 text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">Calculate returns</a>
+                   <div ref={ctaRef} className="mt-10 flex flex-nowrap items-center gap-3 sm:gap-4">
+            <a href="#register" className="flex-1 sm:flex-none text-center rounded-full bg-signal text-ink font-semibold px-4 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base hover:bg-signal-glow transition-colors">Start Investing</a>
+            <a href="#roi-calculator" className="flex-1 sm:flex-none text-center rounded-full border border-line px-4 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">Calculate returns</a>
           </div>
         </div>
       </div>

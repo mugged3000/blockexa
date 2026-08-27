@@ -10,7 +10,7 @@ const CLAUSES = [
   'These terms are considered accepted unconditionally once Blockexa receives your first deposit. From that moment, every action you take on the platform is governed by this Agreement and our other published policies.',
   'Every operation, transaction, order, or communication you make through your account is governed by, and must be carried out in accordance with, this Agreement and our other published terms.',
   'By accepting this Agreement, you confirm that you\u2019re able to receive information — including updates to these terms — by email or through the platform.',
-  'A legal entity that wants to register with Blockexa may do so by emailing support@blockexa.com instead of registering directly on the platform. All terms in this Agreement apply to legal entities in the same way they apply to individual clients.',
+  'A legal entity that wants to register with Blockexa may do so by emailing support@blockexa.ltd instead of registering directly on the platform. All terms in this Agreement apply to legal entities in the same way they apply to individual clients.',
 ];
 
 const DEFINITIONS = [
@@ -108,7 +108,7 @@ export default function TermsAndConditions() {
 
           <p className="tc-block text-sm text-moss leading-relaxed mt-6 border-t border-line pt-8 max-w-3xl">
             Questions about this Agreement? Reach us at{' '}
-            <a href="mailto:support@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">support@blockexa.com</a>.
+            <a href="mailto:support@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">support@blockexa.ltd</a>.
           </p>
         </div>
       </section>

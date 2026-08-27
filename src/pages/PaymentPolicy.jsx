@@ -240,7 +240,7 @@ export default function PaymentPolicy() {
           <p className="mt-12 text-sm text-moss leading-relaxed">
             Questions about a specific payment or withdrawal? Reach our
             support desk at{' '}
-            <a href="mailto:support@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">support@blockexa.com</a>.
+            <a href="mailto:support@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">support@blockexa.ltd</a>.
           </p>
         </div>
       </section>

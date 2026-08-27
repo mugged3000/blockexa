@@ -190,7 +190,7 @@ export default function PrivacyPolicy() {
                 us, you can manage this at any time from your account under{' '}
                 <span className="text-ivory">Account → Notification Settings</span>,
                 or by emailing us at{' '}
-                <a href="mailto:privacy@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.com</a>{' '}
+                <a href="mailto:privacy@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.ltd</a>{' '}
                 from your registered email address. We'll action opt-out
                 requests within 7 business days.
               </p>
@@ -258,7 +258,7 @@ export default function PrivacyPolicy() {
               </ul>
               <p className="mt-6 text-moss leading-relaxed">
                 To exercise any of these rights, contact us at{' '}
-                <a href="mailto:privacy@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.com</a>{' '}
+                <a href="mailto:privacy@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.ltd</a>{' '}
                 from your registered email. We may ask for proof of identity
                 before acting on a request, and we aim to respond within one
                 month.
@@ -313,7 +313,7 @@ export default function PrivacyPolicy() {
               <p className="mt-4 text-moss leading-relaxed">
                 Questions about this policy or how your data is handled? Reach our
                 privacy team at{' '}
-                <a href="mailto:privacy@blockexa.com" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.com</a>.
+                <a href="mailto:privacy@blockexa.ltd" className="text-signal hover:text-signal-glow transition-colors">privacy@blockexa.ltd</a>.
                 We'll do our best to get back to you quickly.
               </p>
             </div>

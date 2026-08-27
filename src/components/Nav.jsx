@@ -38,6 +38,117 @@ function LoginIcon({ className = 'w-4.5 h-4.5' }) {
   );
 }
 
+const LANGUAGES = [
+  { code: 'EN', label: 'English', country: 'gb' },
+  { code: 'ES', label: 'Español', country: 'es' },
+  { code: 'PT', label: 'Português', country: 'pt' },
+  { code: 'IT', label: 'Italiano', country: 'it' },
+  { code: 'FR', label: 'Français', country: 'fr' },
+  { code: 'DE', label: 'Deutsch', country: 'de' },
+  { code: 'NL', label: 'Nederlands', country: 'nl' },
+  { code: 'PL', label: 'Polski', country: 'pl' },
+  { code: 'SV', label: 'Svenska', country: 'se' },
+  { code: 'UK', label: 'Українська', country: 'ua' },
+  { code: 'RU', label: 'Русский', country: 'ru' },
+  { code: 'TR', label: 'Türkçe', country: 'tr' },
+  { code: 'AR', label: 'العربية', country: 'sa' },
+  { code: 'HI', label: 'हिन्दी', country: 'in' },
+  { code: 'TA', label: 'தமிழ்', country: 'in' },
+  { code: 'BN', label: 'বাংলা', country: 'bd' },
+  { code: 'ID', label: 'Bahasa Indonesia', country: 'id' },
+  { code: 'VI', label: 'Tiếng Việt', country: 'vn' },
+  { code: 'TH', label: 'ไทย', country: 'th' },
+  { code: 'FIL', label: 'Filipino', country: 'ph' },
+  { code: 'ZH', label: '中文', country: 'cn' },
+  { code: 'JA', label: '日本語', country: 'jp' },
+  { code: 'KO', label: '한국어', country: 'kr' },
+  { code: 'SW', label: 'Kiswahili', country: 'ke' },
+];
+
+function FlagIcon({ country, className = 'w-6 h-6' }) {
+  return (
+    <span className={`${className} shrink-0 rounded-full overflow-hidden ring-1 ring-white/15 shadow-[0_1px_3px_rgba(0,0,0,0.4)]`}>
+      <img
+        src={`https://flagcdn.com/w40/${country}.png`}
+        alt=""
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    </span>
+  );
+}
+
+function LanguageSwitcher({ language, setLanguage, align = 'down', full = false }) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    function onClickOutside(e) {
+      if (rootRef.current && !rootRef.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
+  return (
+    <div ref={rootRef} className={`relative ${full ? 'w-full' : 'shrink-0'}`}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`group flex items-center gap-2 rounded-full border border-line bg-gradient-to-b from-panel/90 to-panel-raised/70 pl-1.5 pr-3 py-1.5 text-sm text-ivory/90 shadow-[0_1px_0_rgba(255,255,255,0.03)_inset] transition-all duration-200 hover:border-signal/40 hover:shadow-[0_0_18px_-4px_rgba(47,230,163,0.35)] ${
+          open ? 'border-signal/50 shadow-[0_0_18px_-4px_rgba(47,230,163,0.35)]' : ''
+        } ${full ? 'w-full justify-center py-3' : ''}`}
+      >
+        <FlagIcon country={language.country} className="w-6 h-6" />
+        <span className="text-xs font-mono font-semibold tracking-wide">{language.code}</span>
+        <svg width="9" height="6" viewBox="0 0 10 6" fill="none" className={`text-moss group-hover:text-signal-dim transition-all duration-200 ${open ? 'rotate-180 text-signal-dim' : ''}`}>
+          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </button>
+
+      <div
+        className={`absolute right-0 ${align === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'} z-50 transition-all duration-200 ${
+          open ? 'opacity-100 translate-y-0 pointer-events-auto' : `opacity-0 ${align === 'up' ? 'translate-y-1' : '-translate-y-1'} pointer-events-none`
+        }`}
+      >
+        <ul
+          role="listbox"
+          className="max-h-80 overflow-y-auto w-64 rounded-2xl border border-line bg-panel/98 backdrop-blur-md p-1.5 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.7)] divide-y divide-line/60"
+        >
+          {LANGUAGES.map((l) => {
+            const isSelected = l.code === language.code;
+            return (
+              <li key={l.code}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={isSelected}
+                  onClick={() => { setLanguage(l); setOpen(false); }}
+                  className={`w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors ${
+                    isSelected ? 'bg-signal/15 text-ivory font-medium' : 'text-moss hover:text-ivory hover:bg-panel-raised'
+                  }`}
+                >
+                  <FlagIcon country={l.country} className="w-6 h-6" />
+                  <span className="flex-1 flex items-center gap-2 text-left">
+                    <span className="text-[11px] font-mono text-moss shrink-0">{l.code}</span>
+                    <span className="whitespace-nowrap">{l.label}</span>
+                  </span>
+                  {isSelected && (
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" className="shrink-0 text-signal">
+                      <path d="M1 5L5 9L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 function NavDropdown({ id, label, items, open, onOpen, onClose }) {
   return (
     <div className="relative" onMouseEnter={() => onOpen(id)} onMouseLeave={onClose}>
@@ -108,6 +219,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState(null);
+  const [language, setLanguage] = useState(LANGUAGES[0]);
   const closeTimer = useRef(null);
 
   useEffect(() => {
@@ -131,11 +243,6 @@ export default function Nav() {
     }`}>
       <nav className="relative z-50 mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
-          {/*
-            LOGO IMAGE — drop your logo file at public/logo.jpg
-            h-9 keeps it inside the 80px nav bar with breathing room;
-            width is automatic so it won't distort.
-          */}
           <img
             src="/logoexaa.jpg"
             alt="Blockexa"
@@ -148,13 +255,11 @@ export default function Nav() {
           {Object.entries(DROPDOWNS).map(([id, d]) => (
             <NavDropdown key={id} id={id} label={d.label} items={d.items} open={openId === id} onOpen={handleOpen} onClose={handleClose} />
           ))}
-          <a href="/contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Contact</a>
+          <a href="#contact" className="text-sm text-ivory/80 hover:text-ivory transition-colors">Contact</a>
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="#register" className="inline-block rounded-full bg-signal text-ink text-sm font-semibold px-5 py-2.5 hover:bg-signal-glow transition-colors">
-            Register
-          </a>
+          <LanguageSwitcher language={language} setLanguage={setLanguage} />
 
           <a
             href="#login"
@@ -164,7 +269,6 @@ export default function Nav() {
             <LoginIcon />
           </a>
 
-          {/* Hamburger — mobile & tablet only */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -181,9 +285,6 @@ export default function Nav() {
       </nav>
     </header>
 
-    {/* Mobile drawer — deliberately outside <header> and given a very
-        high z-index of its own, so it can never end up stacked behind
-        header or any page content regardless of what z-index those use. */}
     <div
       className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ${
         mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
@@ -227,13 +328,7 @@ export default function Nav() {
               <LoginIcon className="w-4 h-4" />
               Log in
             </a>
-            <a
-              href="#register"
-              onClick={() => setMobileOpen(false)}
-              className="text-center rounded-full bg-signal text-ink text-sm font-semibold px-5 py-3 hover:bg-signal-glow transition-colors"
-            >
-              Register
-            </a>
+            <LanguageSwitcher language={language} setLanguage={setLanguage} align="up" full />
           </div>
         </div>
       </div>

@@ -5,10 +5,66 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export const PLANS = [
-  { id: 'starter', name: 'Starter', dailyRate: 0.8, minAmount: 100, maxAmount: 999, perks: ['Daily settlement', 'Email support', 'Withdraw anytime'], coin: 'bitcoin-btc-logo', coinBg: '#F7931A' },
-  { id: 'growth', name: 'Growth', dailyRate: 1.4, minAmount: 1000, maxAmount: 4999, perks: ['Daily settlement', 'Priority support', 'Withdraw anytime'], coin: 'ethereum-eth-logo', coinBg: '#3C3C3D' },
-  { id: 'elite', name: 'Elite', dailyRate: 1.9, minAmount: 5000, maxAmount: 19999, perks: ['Daily settlement', 'Dedicated manager', 'Withdraw anytime'], coin: 'solana-sol-logo', coinBg: '#131313' },
-  { id: 'vip', name: 'VIP', dailyRate: 2.6, minAmount: 20000, maxAmount: null, perks: ['Daily settlement', 'Direct desk line', 'Custom limits'], coin: 'tether-usdt-logo', coinBg: '#26A17B' },
+  {
+    id: 'beginner',
+    name: 'Beginner',
+    dailyRate: 1.6,
+    minAmount: 200,
+    maxAmount: 3199,
+    contractDays: 5,
+    referralBonus: 10,
+    perks: ['Daily interest payout', 'Capital & profit withdrawable', 'Enhanced account security', '24/7 client support'],
+    coin: 'bitcoin-btc-logo',
+    coinBg: '#F7931A',
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    dailyRate: 2,
+    minAmount: 3200,
+    maxAmount: 5999,
+    contractDays: 7,
+    referralBonus: 10,
+    perks: ['Daily interest payout', 'Capital & profit withdrawable', 'Enhanced account security', '24/7 client support'],
+    coin: 'ethereum-eth-logo',
+    coinBg: '#3C3C3D',
+  },
+  {
+    id: 'advanced',
+    name: 'Advanced',
+    dailyRate: 3,
+    minAmount: 6000,
+    maxAmount: 9999,
+    contractDays: 10,
+    referralBonus: 10,
+    perks: ['Daily interest payout', 'Capital & profit withdrawable', 'Enhanced account security', '24/7 client support'],
+    coin: 'solana-sol-logo',
+    coinBg: '#131313',
+  },
+  {
+    id: 'professional',
+    name: 'Professional',
+    dailyRate: 4.2,
+    minAmount: 10000,
+    maxAmount: 99999,
+    contractDays: 14,
+    referralBonus: 10,
+    perks: ['Daily interest payout', 'Capital & profit withdrawable', 'Enhanced account security', '24/7 client support'],
+    coin: 'bnb-bnb-logo',
+    coinBg: '#F0B90B',
+  },
+  {
+    id: 'elite',
+    name: 'Elite',
+    dailyRate: 5,
+    minAmount: 100000,
+    maxAmount: 10000000,
+    contractDays: 20,
+    referralBonus: 10,
+    perks: ['Daily interest payout', 'Capital & profit withdrawable', 'Enhanced account security', '24/7 client support'],
+    coin: 'tether-usdt-logo',
+    coinBg: '#26A17B',
+  },
 ];
 
 const KITE_CLIP = 'polygon(28px 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%, 0 28px)';
@@ -69,6 +125,15 @@ function PlanCard({ plan, index, featured }) {
             {plan.maxAmount ? `$${plan.minAmount.toLocaleString()} – $${plan.maxAmount.toLocaleString()}` : `$${plan.minAmount.toLocaleString()}+`}
           </p>
 
+          <div className="mt-5 flex flex-wrap gap-2">
+            <span className="rounded-full border border-line px-3 py-1 text-[11px] font-mono text-moss">
+              {plan.contractDays}-day contract
+            </span>
+            <span className="rounded-full border border-line px-3 py-1 text-[11px] font-mono text-moss">
+              {plan.referralBonus}% referral bonus
+            </span>
+          </div>
+
           <ul className="mt-8 space-y-3 flex-1">
             {plan.perks.map((perk) => (
               <li key={perk} className="flex items-center gap-2.5 text-sm text-ivory/85">
@@ -106,9 +171,9 @@ export default function PlanCards() {
           <p className="mt-3 text-moss">Every Blockexa plan settles daily and withdraws on demand — the only thing that changes is your rate and deposit range.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {PLANS.map((plan, i) => (
-            <PlanCard key={plan.id} plan={plan} index={i} featured={plan.id === 'growth'} />
+            <PlanCard key={plan.id} plan={plan} index={i} featured={plan.id === 'advanced'} />
           ))}
         </div>
       </div>
