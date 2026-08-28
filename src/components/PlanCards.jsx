@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { Link } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 
 export const PLANS = [
@@ -143,9 +143,9 @@ function PlanCard({ plan, index, featured }) {
             ))}
           </ul>
 
-          <a href="#roi-calculator" className={`mt-10 text-center rounded-full px-6 py-3.5 text-sm font-semibold transition-colors ${featured ? 'bg-signal text-ink hover:bg-signal-glow' : 'border border-line text-ivory hover:border-signal-dim'}`}>
+          <Link to="#register"  className={`mt-10 text-center rounded-full px-6 py-3.5 text-sm font-semibold transition-colors ${featured ? 'bg-signal text-ink hover:bg-signal-glow' : 'border border-line text-ivory hover:border-signal-dim'}`}>
             Choose {plan.name} with Blockexa
-          </a>
+          </Link>
         </div>
       </div>
     </div>

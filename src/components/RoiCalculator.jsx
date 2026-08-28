@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
 import { PLANS } from './PlanCards';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -113,9 +114,9 @@ export default function RoiCalculator() {
             <div className="mt-8 pt-6 border-t border-line">
               <span className="text-xs text-moss uppercase tracking-widest font-mono">Final balance</span>
               <p className="mt-1 font-display text-3xl font-bold text-ivory">{formatUSD(finalBalance)}</p>
-              <a href="#register" className="mt-6 block text-center rounded-full bg-signal text-ink font-semibold px-6 py-3 hover:bg-signal-glow transition-colors">
+              <Link to="#register" className="mt-6 block text-center rounded-full bg-signal text-ink font-semibold px-6 py-3 hover:bg-signal-glow transition-colors">
                 Start on Blockexa
-              </a>
+              </Link>
             </div>
           </div>
         </div>

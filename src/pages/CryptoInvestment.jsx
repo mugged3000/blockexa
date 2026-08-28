@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PhoneDemo from '../components/PhoneDemo';
+import { Link } from 'react-router-dom';
 import PlanCards from '../components/PlanCards';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -116,10 +117,10 @@ export default function CryptoInvestment() {
               Blockexa manages digital-asset positions on your behalf and settles returns to your balance every day — so investing in crypto feels less like speculation and more like a plan.
             </p>
 
-            <div className="ci-hero-reveal mt-10 flex flex-wrap items-center gap-4">
-              <a href="#plans" className="rounded-full bg-signal text-ink font-semibold px-7 py-3.5 hover:bg-signal-glow transition-colors">Start Investing</a>
-              <a href="#roi-calculator" className="rounded-full border border-line px-7 py-3.5 text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">Calculate returns</a>
-            </div>
+                     <div className="mt-10 flex flex-nowrap items-center gap-3 sm:gap-4">
+            <Link to="#register"  className="flex-1 sm:flex-none text-center rounded-full bg-signal text-ink font-semibold px-4 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base hover:bg-signal-glow transition-colors">Start Investing</Link>
+            <Link to="/#roi-calculator" className="flex-1 sm:flex-none text-center rounded-full border border-line px-4 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">Calculate returns</Link>
+          </div>
           </div>
         </div>
       </section>
@@ -189,8 +190,8 @@ export default function CryptoInvestment() {
             Register in minutes, fund with the asset you already hold, and pick a plan built around how much you're ready to invest.
           </p>
           <div className="ci-cta-reveal mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a href="#register" className="rounded-full bg-signal text-ink font-semibold px-7 py-3.5 hover:bg-signal-glow transition-colors">Create your account</a>
-            <a href="#plans" className="rounded-full border border-line px-7 py-3.5 text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">View plans</a>
+            <Link to="#register" className="rounded-full bg-signal text-ink font-semibold px-7 py-3.5 hover:bg-signal-glow transition-colors">Create your account</Link>
+            <Link to="/#plans"  className="rounded-full border border-line px-7 py-3.5 text-ivory/90 hover:border-signal-dim hover:text-ivory transition-colors">View plans</Link>
           </div>
         </div>
       </section>

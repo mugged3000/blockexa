@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,6 +203,47 @@ export default function Contact() {
                 </button>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="relative py-20 bg-ink border-t border-line">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="contact-reveal flex items-end justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-signal-dim">Find us</span>
+              <h2 className="mt-2 font-display font-bold text-2xl text-ivory">Our office</h2>
+            </div>
+            {/*
+              Update this address to your real office address — it also
+              drives the "Get directions" link below.
+            */}
+          </div>
+
+          <div className="contact-reveal rounded-2xl border border-line overflow-hidden">
+            <iframe
+              title="Blockexa office location"
+              src="https://www.google.com/maps?q=1+Infinite+Loop,+Cupertino,+CA&output=embed"
+              width="100%"
+              height="420"
+              style={{ border: 0, filter: 'grayscale(0.3) invert(0.92) contrast(0.9)' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            />
+          </div>
+
+          <div className="contact-reveal mt-4 flex flex-wrap items-center justify-between gap-4">
+            {/* <p className="text-sm text-moss">1 Infinite Loop, Cupertino, CA — replace with your actual address</p> */}
+            <Link
+              to="https://www.google.com/maps/dir/?api=1&destination=1+Infinite+Loop,+Cupertino,+CA"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-signal hover:text-signal-glow transition-colors font-medium"
+            >
+              Get directions →
+            </Link>
           </div>
         </div>
       </section>
