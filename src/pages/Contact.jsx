@@ -69,7 +69,7 @@ export default function Contact() {
       <section className="relative overflow-hidden bg-ink min-h-[70dvh] flex flex-col">
         <div className="absolute inset-0">
           <img
-            src="/contact-hero.jpg"
+            src="/exaatele.jpg"
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-center"
             style={{ filter: 'brightness(0.8) saturate(0.9)' }}
