@@ -316,7 +316,7 @@ export default function Nav() {
           ))}
 
           <div className="border-b border-line">
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">Contact</a>
+            <Link to="/contact" onClick={() => setMobileOpen(false)} className="block py-4 text-ivory/90 font-medium">Contact</Link>
           </div>
 
           <div className="mt-6 flex flex-col gap-3">
